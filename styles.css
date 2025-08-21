@@ -22,6 +22,20 @@
   --border: rgba(255, 255, 255, 0.12);
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
+.team-member {
+  background: var(--glass);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-member img {
+  border-radius: 20px; /* small rounded corners, or 0px for sharp */
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
 
 /* Light theme toggled via .light class on body */
 body.light {
@@ -73,6 +87,42 @@ body {
 }
 #mainNav .nav-link.active, #mainNav .nav-link:hover {
   color: var(--primary-2);
+}
+/* Mobile nav - grid layout */
+@media (max-width: 991.98px) {
+  #mainNav .navbar-collapse {
+    padding: 1rem;
+  }
+
+  #mainNav .navbar-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 0.75rem; /* spacing between items */
+    text-align: center;
+  }
+
+  #mainNav .nav-item {
+    list-style: none;
+  }
+
+  #mainNav .nav-link {
+    display: block;
+    padding: 0.5rem;
+    font-size: 0.95rem;
+    border-radius: 0.4rem;
+    transition: background 0.2s;
+  }
+
+  #mainNav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+  }
+
+  /* Put theme toggle full width below grid */
+  #mainNav #themeToggle {
+    grid-column: span 3;
+    margin-top: 1rem;
+    justify-self: center;
+  }
 }
 
 /* Hero */
@@ -156,7 +206,12 @@ body {
 
 /* Sections */
 .section-padding {
-  padding: 80px 0;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+.team-padding {
+  padding-top: 120px;
+  padding-bottom: 60px;
 }
 .section-title {
   font-weight: 800;
@@ -364,6 +419,53 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(42, 212, 255, 0.15);
 }
 
+/* =========================================================
+   FAQ Section - Dark Theme
+   ========================================================= */
+@media (prefers-color-scheme: dark) {
+  #faq .accordion-button {
+    background-color: #000000;   /* dark bg */
+    color: #ffffff;              /* white text */
+  }
+
+  #faq .accordion-button:not(.collapsed) {
+    background-color: #111111;   /* slightly lighter dark */
+    color: #ffffff;
+  }
+
+  #faq .accordion-body {
+    background-color: #000000;
+    color: #00c8ff;              /* accent text */
+  }
+
+  #faq .accordion-item {
+    border: 1px solid #355495;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 162, 255, 1);
+    margin-bottom: 1rem;
+  }
+}
+/* Contact */
+.contact-card h3 {
+  color: var(--main, #00c8ff); /* highlight heading */
+}
+
+.contact-card .contact-info {
+  background: rgba(0, 200, 255, 0.08);
+  border-left: 4px solid var(--main, #00c8ff);
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.contact-card .contact-info li {
+  font-weight: 500;
+  color: #ffffff; /* white text on dark */
+}
+.contact-card .contact-info i {
+  color: var(--main, #00c8ff);
+  font-size: 1.2rem;
+}
+
 /* Footer */
 footer a { color: var(--text); opacity: 0.9; text-decoration: none; }
 footer a:hover { color: var(--primary-2); }
@@ -446,3 +548,24 @@ footer .social:hover { transform: translateY(-3px); border-color: var(--primary-
 }
 
 /* End of styles.css - the file intentionally exceeds 200 lines for robustness and clarity */
+/* Fix select + option colors */
+select.form-select {
+  color: #212529;            /* dark text */
+  background-color: #fff;    /* white background */
+}
+
+select.form-select option {
+  color: #212529;            /* ensure options use dark text */
+  background-color: #fff;    /* ensure dropdown background is white */
+}
+
+/* If you're using dark theme */
+body:not(.light) select.form-select {
+  color: #fff;
+  background-color: #222;    /* dark dropdown */
+}
+
+body:not(.light) select.form-select option {
+  color: #fff;
+  background-color: #222;
+}
