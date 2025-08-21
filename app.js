@@ -24,6 +24,27 @@ const throttle = (fn, wait = 100) => {
   };
 };
 
+// Auto-close navbar when clicking or swiping outside (mobile only)
+const setupNavbarAutoClose = () => {
+  const navbarCollapse = document.getElementById("navContent");
+
+  const maybeClose = (e) => {
+    if (
+      navbarCollapse.classList.contains("show") &&
+      !navbarCollapse.contains(e.target) &&
+      !e.target.closest(".navbar-toggler")
+    ) {
+      new bootstrap.Collapse(navbarCollapse).toggle();
+    }
+  };
+
+  // Click outside
+  document.addEventListener("click", maybeClose);
+
+  // Touch outside (for swipe/scroll on background)
+  document.addEventListener("touchstart", maybeClose);
+};
+
 // Navbar active link via IntersectionObserver
 const activateNavLinks = () => {
   const sections = document.querySelectorAll("section[id], header[id]");
@@ -200,6 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTop();
   updateYear();
   setupThemeToggle();
+  setupNavbarAutoClose(); // ✅ add here
 });
 
 /* Extra utility functions and comments to ensure file length:
