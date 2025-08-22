@@ -24,17 +24,96 @@
 }
 .team-member {
   background: var(--glass);
-  border-radius: 16px;
-  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .team-member img {
-  border-radius: 20px; /* small rounded corners, or 0px for sharp */
+  width: 160px;
+  height: 200px;
+  object-fit: cover;   /* keeps faces proportional */
+  border-radius: 12px;
+  margin: 0 auto 15px; /* centers image */
+  display: block;
+}
+
+.team-member h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
 }
 
 .team-member:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 1); /* neon hover */
+}
+/* Section Base */
+.vision-mission-section {
+  background: var(--section-bg, #0a0a0a);
+  color: var(--text-color, #fff);
+}
+
+/* Cards */
+.vision-card, .mission-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vision-card:hover, .mission-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+}
+
+/* Headings */
+.vision-card h3, .mission-card h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00c8ff; /* Neon accent */
+}
+
+.vision-card p, .mission-card p {
+  color: #aaa;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ✅ Light Theme Support (merged) */
+body.light .vision-mission-section {
+  background: #f9f9f9;
+  color: #333;
+}
+
+body.light .vision-card, 
+body.light .mission-card {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+body.light .vision-card h3, 
+body.light .mission-card h3 {
+  text-align: center;
+  color: #0077b6;
+}
+
+body.light .vision-card p, 
+body.light .mission-card p {
+  color: #555;
 }
 
 /* Light theme toggled via .light class on body */
@@ -126,6 +205,14 @@ body {
 }
 
 /* Hero */
+.team-section {
+  padding-top: 20px;
+  padding-bottom: 80px;
+  background: radial-gradient(1200px 600px at 70% -10%, rgba(0, 115, 230, 0.35), transparent),
+              radial-gradient(800px 400px at -10% 20%, rgba(42, 212, 255, 0.25), transparent),
+              linear-gradient(180deg, var(--bg), var(--bg-2));
+  position: relative;
+}
 .hero-section {
   padding-top: 120px;
   padding-bottom: 80px;
@@ -367,24 +454,6 @@ body {
   border-color: rgba(42, 212, 255, 0.5);
   background: linear-gradient(180deg, rgba(42,212,255,0.06), var(--glass));
   transform: scale(1.02);
-}
-
-/* Testimonials */
-.testimonial {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
-}
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  color: #001018;
 }
 
 /* Contact */
